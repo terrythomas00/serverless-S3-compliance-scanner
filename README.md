@@ -1,1 +1,5 @@
-# serverless-S3-compliance-scanner
+# Serverless-S3-Compliance-Scanner
+
+## Project Description
+## Architecture
+## Components Description
