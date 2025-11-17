@@ -15,4 +15,27 @@ built based on a tutorial built with ChatGPT and Claude.ai.
 | Terraform | Terraform is used to automate and provision the entire cloud environment. |
 | Docker | Docker packages the Python scanner application into a Lambda-compatible container image. |
 ## Prerequisites
+* Install AWS cli
+* Install VS Code
+* Install Docker
+* Install Colima (Only if using Mac OS)
 ## Project Structure
+```bash
+secure-s3-scanner/
+│
+├── app/                     <- Lambda build directory
+│   ├── main.py
+│   ├── requirements.txt
+│   └── Dockerfile           <- lambda container build
+│
+├── local_run/
+│   ├── main.py              <- same code but built and able to run locally
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+└── terraform/
+    ├── main.tf
+    ├── variables.tf
+    ├── outputs.tf
+    └── versions.tf
+```
