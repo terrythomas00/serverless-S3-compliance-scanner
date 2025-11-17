@@ -15,3 +15,4 @@ built based on a tutorial built with ChatGPT and Claude.ai.
 | Terraform | Terraform is used to automate and provision the entire cloud environment. |
 | Docker | Docker packages the Python scanner application into a Lambda-compatible container image. |
 ## Prerequisites
+## Project Structure
