@@ -78,7 +78,7 @@ docker build -t s3-scanner-lambda:lambda-arm64-fix2 -f app/Dockerfile .
 trivy image --severity HIGH,CRITICAL s3-scanner-lambda:lambda-arm64-fix2
 ```
 **Results**
-![trivy_results]()
+![trivy_results](trivy_results.png)
 **Security Notes**
 
 - This project uses the official AWS Lambda Python base image.
