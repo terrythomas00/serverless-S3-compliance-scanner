@@ -14,10 +14,12 @@ built based on a tutorial built with ChatGPT and Claude.ai.
 | CloudWatch | CloudWatch receives all logging output from the Lambda function. |
 | Terraform | Terraform is used to automate and provision the entire cloud environment. |
 | Docker | Docker packages the Python scanner application into a Lambda-compatible container image. |
+| Trivy | An open-source security scanner that identifies vulnerabilities in container images and other artifacts. |
 ## Prerequisites
 * Install AWS cli
 * Install VS Code
 * Install Docker
+* Install Trivy
 * Install Colima (Only if using Mac OS)
 ## Project Structure
 ```bash
