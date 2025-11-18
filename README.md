@@ -83,7 +83,7 @@ trivy image --severity HIGH,CRITICAL s3-scanner-lambda:lambda-arm64-fix2
 
 - This project uses the official AWS Lambda Python base image.
 
-- Trivy reports several HIGH vulnerabilities in AWS-managed components (e.g., libcap, Go stdlib, lambda emulator).
+- Trivy reports several HIGH vulnerabilities in AWS-managed components (e.g., libcap).
 
 - These libraries are built into the base image and cannot be patched by the application.
 
