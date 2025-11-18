@@ -91,3 +91,8 @@ trivy image --severity HIGH,CRITICAL s3-scanner-lambda:lambda-arm64-fix2
 
 - The image will be rebuilt automatically when AWS releases patched base images.
 
+## 5. **Push your Image to the ECR Repository**
+- Authenticate your Docker Client
+```bash
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws account number>.dkr.ecr.us-east-1.amazonaws.com
+```
