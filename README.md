@@ -38,7 +38,7 @@ aws configure
 
 # Project Structure
 ```bash
-secure-s3-scanner/
+s3_compliance_scan/
 │
 ├── app/                     <- Lambda build directory
 │   ├── main.py
@@ -58,3 +58,36 @@ secure-s3-scanner/
 ```
 # Deployment Guide
 ## 1. **Create The Reports Bucket**
+```bash
+terraform init
+```
+```bash
+terraform apply -target=aws_s3_bucket.reports_bucket
+```
+## 2. **Create ECR Repository**
+```bash
+terraform apply -target=aws_ecr_repository.scanner
+```
+## 3. **Build your Docker Image**
+- Note: Make sure you are in the root of the s3_compliance_scan folder before running the command below
+```bash
+docker build -t s3-scanner-lambda:lambda-arm64-fix2 -f app/Dockerfile .
+```
+## 4. **Scan your Docker Image for Vulnerabilities**
+```bash
+trivy image --severity HIGH,CRITICAL s3-scanner-lambda:lambda-arm64-fix2
+```
+**Results**
+![trivy_results]()
+**Security Notes**
+
+- This project uses the official AWS Lambda Python base image.
+
+- Trivy reports several HIGH vulnerabilities in AWS-managed components (e.g., libcap, Go stdlib, lambda emulator).
+
+- These libraries are built into the base image and cannot be patched by the application.
+
+- All project-level dependencies are fully updated.
+
+- The image will be rebuilt automatically when AWS releases patched base images.
+
