@@ -96,3 +96,13 @@ trivy image --severity HIGH,CRITICAL s3-scanner-lambda:lambda-arm64-fix2
 ```bash
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws account number>.dkr.ecr.us-east-1.amazonaws.com
 ```
+- Tag the Image
+```bash
+docker tag s3-scanner-lambda:<terraform image uri tag> <aws account number>.dkr.ecr.us-east-1.amazonaws.com/secure-s3-scanner-repo:<terraform image uri tag>
+```
+- Push the Image
+```bash
+docker push 813429065442.dkr.ecr.us-east-1.amazonaws.com/secure-s3-scanner-repo:<terraform image uri tag>
+```
+
+
