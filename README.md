@@ -118,5 +118,11 @@ cat out.json | jq .
 ```
 ![terminal results](https://github.com/terrythomas00/serverless-S3-compliance-scanner/blob/db52d504c697b7a0159c0fec25918cf0e19e59d4/terminal_results.png)
 
-## . **Download S3 Compliance Report**
-![s3 compliance bucket](
+## 8. **Download S3 Compliance Report**
+![s3 compliance bucket](s3_bucket_compliance.png)
+
+## 9. **Review Compliance Report**
+
+In the report shown below the terms true and false are used to display what options are enabled and disabled **(enabled = true and disabled = false)**
+
+![s3 compliance report]()
