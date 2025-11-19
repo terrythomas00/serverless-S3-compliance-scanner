@@ -104,5 +104,16 @@ docker tag s3-scanner-lambda:<terraform image uri tag> <aws account number>.dkr.
 ```bash
 docker push 813429065442.dkr.ecr.us-east-1.amazonaws.com/secure-s3-scanner-repo:<terraform image uri tag>
 ```
-
-
+## 6. **Create the Remaining Resou with Terraform**
+- Note: Make sure you are in the root of the s3_compliance_scan folder before running the command below.
+```bash
+terraform apply
+```
+## 7. **Trigger the Lambda Function**
+```bash
+aws lambda invoke --region us-east-1 --function-name secure-s3-scanner-fn --log-type Tail out.json > /dev/null
+```
+```bash
+cat out.json | jq .
+```
+![terminal results](
