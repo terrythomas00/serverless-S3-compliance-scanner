@@ -125,4 +125,4 @@ cat out.json | jq .
 
 In the report shown below the terms true and false are used to display what options are enabled and disabled **(enabled = true and disabled = false)**
 
-![s3 compliance report]()
+![s3 compliance report](s3_compliance_results.png)
