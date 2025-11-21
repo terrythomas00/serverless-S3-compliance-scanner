@@ -4,7 +4,7 @@
 This is a serverless S3 compliance scanner that audits encryption, public access, and versioning across all buckets and publishes versioned JSON reports to a secure S3 bucket. This project was
 built based on a tutorial built with ChatGPT and Claude.ai.
 # Architecture
-![diagram](https://github.com/terrythomas00/serverless-S3-compliance-scanner/blob/main/s3_scanner_diagram.png)
+![diagram](https://github.com/terrythomas00/serverless-S3-compliance-scanner/blob/main/photo/s3_scanner_diagram.png)
 # Components Description
 | Component  | Functionality  |
 |----------|----------|
@@ -78,7 +78,7 @@ docker build -t s3-scanner-lambda:lambda-arm64-fix2 -f app/Dockerfile .
 trivy image --severity HIGH,CRITICAL s3-scanner-lambda:lambda-arm64-fix2
 ```
 **Results**
-![trivy_results](trivy_results.png)
+![trivy_results](https://github.com/terrythomas00/serverless-S3-compliance-scanner/blob/main/photo/trivy_results.png)
 **Security Notes**
 
 - This project uses the official AWS Lambda Python base image.
@@ -119,12 +119,12 @@ cat out.json | jq .
 ![terminal results](https://github.com/terrythomas00/serverless-S3-compliance-scanner/blob/db52d504c697b7a0159c0fec25918cf0e19e59d4/terminal_results.png)
 
 ## 8. **Download S3 Compliance Report**
-![s3 compliance bucket](s3_bucket_compliance.png)
+![s3 compliance bucket](https://github.com/terrythomas00/serverless-S3-compliance-scanner/blob/main/photo/s3_bucket_compliance.png)
 
 ## 9. **Review Compliance Report**
 
 In the report shown below the terms true and false are used to display what options are enabled and disabled **(enabled = true and disabled = false)**
 
-![s3 compliance report](s3_compliance_results.png)
+![s3 compliance report](https://github.com/terrythomas00/serverless-S3-compliance-scanner/blob/main/photo/s3_compliance_results.png)
 
 # Next Steps -
