@@ -15,7 +15,7 @@ built based on a tutorial built with ChatGPT and Claude.ai.
 | Terraform | Terraform is used to automate and provision the entire cloud environment. |
 | Docker | Docker packages the Python scanner application into a Lambda-compatible container image. |
 | Trivy | An open-source security scanner that identifies vulnerabilities in container images and other artifacts. |
-| AWS Secrets Manager | An open-source security scanner that identifies vulnerabilities in container images and other artifacts. |
+| AWS Secrets Manager | AWS Secrets Manager securely stores the OpenAI Project API key used by the Lambda function. Instead of hard-coding sensitive credentials. |
 | OpenAI | Generate clear, human-readable summaries of S3 security findings and solutions. | 
 
 # Prerequisites
@@ -211,3 +211,5 @@ aws lambda invoke --region us-east-1 --function-name secure-s3-scanner-fn --log-
 ```bash
 cat out.json | jq .
 ```
+## 2. **View the Compliance AI Results**
+![](photo/ai_s3_compliance_results.png)
