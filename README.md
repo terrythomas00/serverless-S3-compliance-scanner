@@ -15,6 +15,9 @@ built based on a tutorial built with ChatGPT and Claude.ai.
 | Terraform | Terraform is used to automate and provision the entire cloud environment. |
 | Docker | Docker packages the Python scanner application into a Lambda-compatible container image. |
 | Trivy | An open-source security scanner that identifies vulnerabilities in container images and other artifacts. |
+| AWS Secrets Manager | An open-source security scanner that identifies vulnerabilities in container images and other artifacts. |
+| OpenAI | Generate clear, human-readable summaries of S3 security findings and solutions. | 
+ |
 # Prerequisites
 * Install AWS cli
 * Install VS Code
@@ -127,4 +130,71 @@ In the report shown below the terms true and false are used to display what opti
 
 ![s3 compliance report](https://github.com/terrythomas00/serverless-S3-compliance-scanner/blob/main/photo/s3_compliance_results.png)
 
-# Next Steps -
+# Next Steps - Integrate OpenAI 
+
+# Project Description
+This part of the project integrates OpenAI with AWS Lambda to generate clear, human-readable summaries of S3 security findings and solutions. 
+
+**A Few Things to Change**
+
+Add the OpenAI dependency to the **app/requirements.txt** file
+```bash
+openai>=1.0.0
+```
+Add the following line of code to the top of the **main.py** file
+```bash
+from ai_helper import explain_findings
+```
+Add the following code section after the **non_compliant** code section
+```bash
+    ai_input = []
+    for r in results:
+        bucket_info = {
+            "bucket": r["name"],
+            "public": r["public_access"],
+            "encryption": r["encryption"],
+            "versioning": r["versioning"],
+        }
+        ai_input.append(bucket_info)
+```
+Add the following lines of code after **ai_input** section code
+```bash
+ai_notes = explain_findings(ai_input)
+ai_summary_lines = ai_notes.split("\n")
+```
+Add the following line to the end of **payload** section code
+```bash
+'ai_summary': ai_summary_lines,
+```
+Once these changes are made, you will need to save everything and make the last remaining changes to our terraform code. 
+
+**Terraform**
+Add the following lines of code to your Terraform **lambda.tf**, under the **environment** section. 
+```bash
+AI_SECRET_NAME = "ai-api-key"
+ENABLE_AI = "true"
+```
+# Final Project Structure
+```bash
+s3_compliance_scan/
+├── app
+│   ├── ai_helper.py
+│   ├── Dockerfile
+│   ├── main.py
+│   └── requirements.txt
+|
+├── local_run
+│   ├── Dockerfile
+│   └── run.sh
+|
+├── README.md
+├── terraform
+│   ├── ecr.tf
+│   ├── iam.tf
+│   ├── lambda.tf
+│   ├── outputs.tf
+│   ├── provider.tf
+│   ├── s3.tf
+│   ├── terraform.tfvars
+│   └── variables.tf
+```
