@@ -17,7 +17,7 @@ built based on a tutorial built with ChatGPT and Claude.ai.
 | Trivy | An open-source security scanner that identifies vulnerabilities in container images and other artifacts. |
 | AWS Secrets Manager | An open-source security scanner that identifies vulnerabilities in container images and other artifacts. |
 | OpenAI | Generate clear, human-readable summaries of S3 security findings and solutions. | 
- |
+
 # Prerequisites
 * Install AWS cli
 * Install VS Code
@@ -107,7 +107,7 @@ docker tag s3-scanner-lambda:<terraform image uri tag> <aws account number>.dkr.
 ```bash
 docker push 813429065442.dkr.ecr.us-east-1.amazonaws.com/secure-s3-scanner-repo:<terraform image uri tag>
 ```
-## 6. **Create the Remaining Resou with Terraform**
+## 6. **Create the Remaining Resource with Terraform**
 **Note:** Make sure you are in the root of the s3_compliance_scan folder before running the command below.
 ```bash
 terraform apply
@@ -129,6 +129,9 @@ cat out.json | jq .
 In the report shown below the terms true and false are used to display what options are enabled and disabled **(enabled = true and disabled = false)**
 
 ![s3 compliance report](https://github.com/terrythomas00/serverless-S3-compliance-scanner/blob/main/photo/s3_compliance_results.png)
+
+## Viewed in VS Code
+![s3 compliance report vs code](photo/s3_compliance_results_vscode.png)
 
 # Next Steps - Integrate OpenAI 
 
@@ -197,4 +200,14 @@ s3_compliance_scan/
 │   ├── s3.tf
 │   ├── terraform.tfvars
 │   └── variables.tf
+```
+
+## 1. **Trigger the Lambda Function**
+
+**Note:** Make sure you are in the root of the s3_compliance_scan folder before running the command below
+```bash
+aws lambda invoke --region us-east-1 --function-name secure-s3-scanner-fn --log-type Tail out.json > /dev/null
+```
+```bash
+cat out.json | jq .
 ```
