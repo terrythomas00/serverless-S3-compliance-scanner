@@ -1,0 +1,1 @@
+{"message": "Scan complete", "report_bucket": "dev-secure-reports", "report_key": "reports/s3_compliance_report_20251121T192251Z.json", "total_buckets": 9, "non_compliant_buckets": 9}
